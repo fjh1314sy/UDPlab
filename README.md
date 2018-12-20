@@ -1,1 +1,11 @@
-# UDP
+    Linux内核中协议栈中，UDP报文发送的主要流程如下(仅关注L4)：
+    send(或sendto)系统调用-->
+          sock_sendmsg()-->
+              __sock_sendmsg()-->
+                  __sock_sendmsg_nosec()-->
+                      sock->ops->sendmsg()-->
+                          udp_sendmsg()
+    udp_sendmsg()主要流程如下：
+    1）前期处理。包括，对数据长度合法性判断、pending数据的判断、目的地址的处理和获取、控制信息的处理、组播处理、connected信息处理、MSG_CONFIRM标志的处理等。
+    2）调用ip_append_data()接口将其添加到传输控制块(sock)的发送队列中(利用发送队列中的现有skb，或者新创建skb，详细原理和流程请参见ip_append_data()接口的分析)。
+    3）判断是否有cork标记(MSG_MORE)，如果没有，则说明需要立即发送，则调用udp_push_pending_frames()接口发送报文，实际是将包提交至IP层；如果设置了cork，则说明需要阻塞等待直到数据达到MTU大小，则完成本次的udp_sendmsg()处理。
