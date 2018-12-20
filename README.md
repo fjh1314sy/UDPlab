@@ -1,5 +1,7 @@
 # UDP
-    Linux内核中协议栈中，UDP报文发送的主要流程如下：
+![](https://github.com/zcq-zq/UDP/blob/master/pic/1.png)<br>
+
+		Linux内核中协议栈中，UDP报文发送的主要流程如下：
     inet_sendmsg()-->
           udp_sendmsg() -->
     udp_sendmsg()主要流程如下：
@@ -42,7 +44,7 @@
 
 		if (sk_can_busy_loop(sk) &&
 		    sk_busy_loop(sk, flags & MSG_DONTWAIT))
-			continue;
+			continue;		
 
 		error = -EAGAIN;
 		if (!timeo)		//非阻塞模式 			goto no_packet;
