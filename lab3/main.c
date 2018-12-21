@@ -398,7 +398,7 @@ int main()
     MenuConfig("quit","Quit from MenuOS",Quit);
     MenuConfig("replyhi", "Reply hi TCP Service", StartReplyhi);
     MenuConfig("hello", "Hello TCP Client", Hello);
-    MenuConfig("UDP_Server", "start UDP Service", StartUDPServer);
-    MenuConfig("UDP_Client", "UDP Client", UDP_Client);
+    MenuConfig("UDPreplay", "start UDP Service", StartUDPServer);
+    MenuConfig("UDPC", "UDP Client", UDP_Client);
     ExecuteMenu();
 }
