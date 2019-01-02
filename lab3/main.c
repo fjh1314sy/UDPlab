@@ -311,10 +311,7 @@ int UDP_Server()
     {
         int n=recvfrom(sockSer, recvbuf, 256, 0, (struct sockaddr*)&addrCli, &addrlen);
         if(n>0){
-	printf("Server:I have receive the message:>%s from client\n", recvbuf);
-        printf("Server input:>");
-        sendbuf[20]="I have receive the message"
-        sendto(sockSer, sendbuf, strlen(sendbuf)+1, 0, (struct sockaddr*)&addrCli, addrlen);
+	printf("Server:I have receive the message:"%s" from client\n", recvbuf);
 	}
     }
  
@@ -355,9 +352,6 @@ int UDP_Client()
         printf("Client send:");
         scanf("%s",sendbuf);
         sendto(sockCli, sendbuf, strlen(sendbuf)+1, 0, (struct sockaddr*)&addrSer, addrlen);
- 
-        recvfrom(sockCli, recvbuf, 256, 0, (struct sockaddr*)&addrSer, &addrlen);
-        printf("Server repliy:%s\n", recvbuf);
     }
     close(sockCli);
     return 0;
