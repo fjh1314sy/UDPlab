@@ -311,7 +311,7 @@ int UDP_Server()
     {
         int n=recvfrom(sockSer, recvbuf, 256, 0, (struct sockaddr*)&addrCli, &addrlen);
         if(n>0){
-	printf("Server:I have receive the message:"%s" from client\n", recvbuf);
+	printf("Server:I have receive the message:%s from client\n", recvbuf);
 	}
     }
  
@@ -416,7 +416,7 @@ int httpclient( )
 
     //Connect to remote server
     if (connect(socket_desc, (struct sockaddr *)&server, sizeof(server)) < 0) {
-        printf("connect error： %s", errno);
+        printf("connect error");
         return 1;
     }
 
