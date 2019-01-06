@@ -400,17 +400,8 @@ int httpclient( )
         printf("Could not create socket");
     }
 
-    char ip[20] = {0};
-    char *hostname = "www.baidu.com";
-    struct hostent *hp;
-    if ((hp = gethostbyname(hostname)) == NULL) {
-	printf("get IP failed");
-        return 1;
-    }
-    
-    strcpy(ip, inet_ntoa(*(struct in_addr *)hp->h_addr_list[0]));
 
-    server.sin_addr.s_addr = inet_addr(ip);
+    server.sin_addr.s_addr = inet_addr("14.215.177.39");
     server.sin_family = AF_INET;
     server.sin_port = htons(80);
 
