@@ -404,6 +404,7 @@ int httpclient( )
     char *hostname = "www.baidu.com";
     struct hostent *hp;
     if ((hp = gethostbyname(hostname)) == NULL) {
+	printf("get IP failed");
         return 1;
     }
     
