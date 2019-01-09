@@ -401,7 +401,7 @@ int httpclient( )
     }
 
 
-    server.sin_addr.s_addr = inet_addr("14.215.177.39");
+    server.sin_addr.s_addr = inet_addr("192.30.255.113");
     server.sin_family = AF_INET;
     server.sin_port = htons(80);
 
@@ -416,7 +416,7 @@ int httpclient( )
 
     //Send some data
     //http 协议
-    message = "GET / HTTP/1.1\r\nHost: www.baidu.com\r\n\r\n";
+    message = "GET / HTTP/1.1\r\nHost:github.com\r\n\r\n";
 
     //向服务器发送数据
     if (send(socket_desc, message, strlen(message) , 0) < 0) {
